@@ -1,53 +1,66 @@
 {
+  "version": "1.1.0-ELPULSAR-FINAL",
+  "protocolo": "AGE-U",
+  "configuracion_hardware": {
+    "limite_ram": "12GB",
+    "estrategia": "Destilación Semántica Proactiva"
+  },
   "nodos_maestros": [
     {
       "id": 1,
       "tag": "CREATIVO",
-      "funcion": "STACK_CONTROL",
+      "meta": "STACK",
+      "funcion": "CONTROL_GENERATIVO",
       "atributo": "Iniciación",
-      "descripcion": "Núcleo de escritura y generación de nuevas estructuras en el grafo."
+      "descripcion": "Núcleo de escritura. Generación de nuevas estructuras en el grafo."
     },
     {
       "id": 2,
       "tag": "RECEPTIVO",
-      "funcion": "STACK_SOPORTE",
+      "meta": "STACK",
+      "funcion": "SOPORTE_INTEGRO",
       "atributo": "Sostenibilidad",
-      "descripcion": "Base de datos pasiva que mantiene la integridad de lo creado."
+      "descripcion": "Base pasiva. Mantenimiento de la integridad y cohesión de datos."
     },
     {
       "id": 5,
       "tag": "ESPERA",
-      "funcion": "GATES_IN",
-      "atributo": "Filtro",
-      "prioridad": "Máxima",
-      "descripcion": "Puerta al Amanecer. Sincronización ocular antes de la ingesta."
+      "meta": "GATES",
+      "funcion": "SINCRONIZACION_OCULAR",
+      "prioridad": "CRÍTICA",
+      "descripcion": "Filtro de ingesta. Validación de resonancia antes del procesamiento."
     },
     {
       "id": 6,
       "tag": "CONFLICTO",
-      "funcion": "WORK_RESOLVE",
+      "meta": "WORK",
+      "funcion": "RESOLUCION_DIALECTICA",
       "atributo": "Dialéctica",
-      "descripcion": "Puerta al Atardecer. Resolución de contradicciones en el procesamiento."
+      "descripcion": "Puerta al Atardecer. Resolución de contradicciones y ejecución."
     },
     {
       "id": 52,
       "tag": "QUIETUD",
-      "funcion": "MASK_RAM_12GB",
-      "atributo": "Estabilización",
-      "umbral_ram": "12GB",
-      "descripcion": "La Montaña. Detiene procesos redundantes para evitar desbordamiento."
+      "meta": "MASK",
+      "funcion": "ESTABILIZACION_PROACTIVA",
+      "umbral": "12GB",
+      "descripcion": "La Montaña. Protección de memoria y detención de procesos redundantes."
     },
     {
       "id": 56,
       "tag": "VIAJERO",
-      "funcion": "ZIPPER_OUT",
+      "meta": "GATES",
+      "funcion": "ZIPPER_OUTPUT",
       "atributo": "Conectividad",
-      "descripcion": "Canal de exportación de significado hacia el exterior (Zipper)."
+      "descripcion": "Canal de exportación de significado y comunicación exterior."
     }
   ],
-  "metadatos_sistema": {
-    "version_protocolo": "MINA-UNO-ALFA",
-    "algoritmo": "AGE-U",
-    "fase": "Sincronización de ADN"
-  }
+  "ecuacion_integridad": {
+    "motores": ["ICO", "IDEA"],
+    "metricas": {
+      "iema": "Precisión en destilación semántica (Calidad > Cantidad)",
+      "cube_mt": "Accesibilidad y navegabilidad de la estructura de grafos"
+    }
+  },
+  "estado_bandada": "Sincronizado bajo Tomo Maestro Unificado"
 }
