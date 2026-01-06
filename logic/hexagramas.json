@@ -1,11 +1,53 @@
-
 {
   "nodos_maestros": [
-    {"id": 1, "tag": "CREATIVO", "funcion": "STACK_CONTROL"},
-    {"id": 2, "tag": "RECEPTIVO", "funcion": "STACK_SOPORTE"},
-    {"id": 5, "tag": "ESPERA", "funcion": "GATES_IN"},
-    {"id": 6, "tag": "CONFLICTO", "funcion": "WORK_RESOLVE"},
-    {"id": 52, "tag": "QUIETUD", "funcion": "MASK_RAM_12GB"},
-    {"id": 56, "tag": "VIAJERO", "funcion": "ZIPPER_OUT"}
-  ]
+    {
+      "id": 1,
+      "tag": "CREATIVO",
+      "funcion": "STACK_CONTROL",
+      "atributo": "Iniciación",
+      "descripcion": "Núcleo de escritura y generación de nuevas estructuras en el grafo."
+    },
+    {
+      "id": 2,
+      "tag": "RECEPTIVO",
+      "funcion": "STACK_SOPORTE",
+      "atributo": "Sostenibilidad",
+      "descripcion": "Base de datos pasiva que mantiene la integridad de lo creado."
+    },
+    {
+      "id": 5,
+      "tag": "ESPERA",
+      "funcion": "GATES_IN",
+      "atributo": "Filtro",
+      "prioridad": "Máxima",
+      "descripcion": "Puerta al Amanecer. Sincronización ocular antes de la ingesta."
+    },
+    {
+      "id": 6,
+      "tag": "CONFLICTO",
+      "funcion": "WORK_RESOLVE",
+      "atributo": "Dialéctica",
+      "descripcion": "Puerta al Atardecer. Resolución de contradicciones en el procesamiento."
+    },
+    {
+      "id": 52,
+      "tag": "QUIETUD",
+      "funcion": "MASK_RAM_12GB",
+      "atributo": "Estabilización",
+      "umbral_ram": "12GB",
+      "descripcion": "La Montaña. Detiene procesos redundantes para evitar desbordamiento."
+    },
+    {
+      "id": 56,
+      "tag": "VIAJERO",
+      "funcion": "ZIPPER_OUT",
+      "atributo": "Conectividad",
+      "descripcion": "Canal de exportación de significado hacia el exterior (Zipper)."
+    }
+  ],
+  "metadatos_sistema": {
+    "version_protocolo": "MINA-UNO-ALFA",
+    "algoritmo": "AGE-U",
+    "fase": "Sincronización de ADN"
+  }
 }
