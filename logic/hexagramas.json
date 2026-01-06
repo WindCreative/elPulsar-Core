@@ -1,1 +1,11 @@
 
+{
+  "nodos_maestros": [
+    {"id": 1, "tag": "CREATIVO", "funcion": "STACK_CONTROL"},
+    {"id": 2, "tag": "RECEPTIVO", "funcion": "STACK_SOPORTE"},
+    {"id": 5, "tag": "ESPERA", "funcion": "GATES_IN"},
+    {"id": 6, "tag": "CONFLICTO", "funcion": "WORK_RESOLVE"},
+    {"id": 52, "tag": "QUIETUD", "funcion": "MASK_RAM_12GB"},
+    {"id": 56, "tag": "VIAJERO", "funcion": "ZIPPER_OUT"}
+  ]
+}
