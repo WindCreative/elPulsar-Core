@@ -1,42 +1,31 @@
+import json
+import time
+from drivers.neo4j_connector import Neo4jPulsar
 
-import random
-import datetime
-
-class ElPulsarCore:
-    def __init__(self, uri, user, password):
-        from neo4j import GraphDatabase
-        self.driver = GraphDatabase.driver(uri, auth=(user, password))
-
-    def close(self):
-        self.driver.close()
-
-    def ejecutar_latido(self, tx):
-        hex_id = random.randint(1, 64)
-        ahora = datetime.datetime.now()
+def ejecutar_latido_con_sentido():
+    db = Neo4jPulsar()
+    
+    # Leemos tu herencia de GitHub
+    with open('logic/hexagramas.json', 'r') as f:
+        data = json.load(f)
+        nodos = data['nodos_maestros']
+    
+    # Elegimos un nodo basado en tu protocolo (ej: el 1 CREATIVO)
+    nodo_actual = nodos[0] 
+    
+    try:
+        start_time = time.time()
+        # Lógica de simulación de proceso...
+        latencia = time.time() - start_time
         
-        # Lógica de Secuencia: Buscamos el último latido para encadenar el nuevo
-        query = """
-        MATCH (h:Hexagrama {id: $hid})
-        OPTIONAL MATCH (ultimo:Latido)
-        WITH h, ultimo ORDER BY ultimo.timestamp DESC LIMIT 1
-        CREATE (n:Latido {timestamp: $ts, id: $hid})-[:REPRESENTA]->(h)
-        WITH n, ultimo
-        FOREACH (_ IN CASE WHEN ultimo IS NOT NULL THEN [1] ELSE [] END |
-            CREATE (n)-[:SIGUE_A]->(ultimo)
+        db.registrar_latido(
+            id_hex=nodo_actual['id'],
+            latencia=latencia,
+            msg=f"Protocolo {data['protocolo']}: Actuando como {nodo_actual['tag']}"
         )
-        RETURN n.id
-        """
-        result = tx.run(query, hid=hex_id, ts=ahora)
-        return result.single()[0]
+        print(f"✅ Latido resonante: {nodo_actual['tag']} ({nodo_actual['descripcion']})")
+    finally:
+        db.close()
 
-    def obtener_datos_servicio(self, tx):
-        # Traemos los últimos 10 latidos con su latencia simulada para Amelia
-        query = """
-        MATCH (l:Latido)
-        RETURN l.id AS id, l.timestamp AS ts
-        ORDER BY l.timestamp DESC LIMIT 10
-        """
-        res = tx.run(query)
-        import datetime
-        # Simulamos una latencia para el historial (en producción sería real)
-        return [{'id': r['id'], 'ts': r['ts'].to_native(), 'lat': 0.05} for r in res]
+if __name__ == "__main__":
+    ejecutar_latido_con_sentido()
