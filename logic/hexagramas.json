@@ -1,0 +1,66 @@
+{
+  "version": "1.1.0-ELPULSAR-FINAL",
+  "protocolo": "AGE-U",
+  "configuracion_hardware": {
+    "limite_ram": "12GB",
+    "estrategia": "Destilación Semántica Proactiva"
+  },
+  "nodos_maestros": [
+    {
+      "id": 1,
+      "tag": "CREATIVO",
+      "meta": "STACK",
+      "funcion": "CONTROL_GENERATIVO",
+      "atributo": "Iniciación",
+      "descripcion": "Núcleo de escritura. Generación de nuevas estructuras en el grafo."
+    },
+    {
+      "id": 2,
+      "tag": "RECEPTIVO",
+      "meta": "STACK",
+      "funcion": "SOPORTE_INTEGRO",
+      "atributo": "Sostenibilidad",
+      "descripcion": "Base pasiva. Mantenimiento de la integridad y cohesión de datos."
+    },
+    {
+      "id": 5,
+      "tag": "ESPERA",
+      "meta": "GATES",
+      "funcion": "SINCRONIZACION_OCULAR",
+      "prioridad": "CRÍTICA",
+      "descripcion": "Filtro de ingesta. Validación de resonancia antes del procesamiento."
+    },
+    {
+      "id": 6,
+      "tag": "CONFLICTO",
+      "meta": "WORK",
+      "funcion": "RESOLUCION_DIALECTICA",
+      "atributo": "Dialéctica",
+      "descripcion": "Puerta al Atardecer. Resolución de contradicciones y ejecución."
+    },
+    {
+      "id": 52,
+      "tag": "QUIETUD",
+      "meta": "MASK",
+      "funcion": "ESTABILIZACION_PROACTIVA",
+      "umbral": "12GB",
+      "descripcion": "La Montaña. Protección de memoria y detención de procesos redundantes."
+    },
+    {
+      "id": 56,
+      "tag": "VIAJERO",
+      "meta": "GATES",
+      "funcion": "ZIPPER_OUTPUT",
+      "atributo": "Conectividad",
+      "descripcion": "Canal de exportación de significado y comunicación exterior."
+    }
+  ],
+  "ecuacion_integridad": {
+    "motores": ["ICO", "IDEA"],
+    "metricas": {
+      "iema": "Precisión en destilación semántica (Calidad > Cantidad)",
+      "cube_mt": "Accesibilidad y navegabilidad de la estructura de grafos"
+    }
+  },
+  "estado_bandada": "Sincronizado bajo Tomo Maestro Unificado"
+}
