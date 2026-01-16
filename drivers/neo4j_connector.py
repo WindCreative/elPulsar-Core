@@ -7,7 +7,7 @@ class Neo4jPulsar:
         self.uri = userdata.get('NEO4J_URI')
         self.user = userdata.get('NEO4J_USER')
         # Buscamos 'NEO4J_PASS' para coincidir con tus secretos
-        self.password = userdata.get('NEO4J_PASS') 
+        self.password = userdata.get('NEO4J_PASS')
         self.driver = GraphDatabase.driver(self.uri, auth=(self.user, self.password))
 
     def close(self):
