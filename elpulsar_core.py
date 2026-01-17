@@ -1,65 +1,36 @@
-
-import random
-import datetime
+import json
+import time
+import os
 from drivers.neo4j_connector import Neo4jPulsar
 
-class ElPulsarCore:
-    def __init__(self):
-        self.db = Neo4jPulsar()
+def ejecutar_latido_con_sentido():
+    db = Neo4jPulsar()
 
-    def close(self):
-        self.db.close()
+    # Ruta absoluta al JSON de hexagramas
+    ruta_json = "/content/drive/MyDrive/elPulsar_Project/logic/hexagramas.json"
 
-    def gates_h5_sync(self):
-        """H5: Sincronización Ocular - Captura de metadato temporal"""
-        return datetime.datetime.now().isoformat()
+    with open(ruta_json, 'r') as f:
+        data = json.load(f)
+        nodos = data['nodos_maestros']
 
-    def zipper_h56_validation(self, id_evento):
-        """H56: Cierre de Licitud (Zipper) - Blindaje final"""
-        # Según el Tomo Maestro, todo proceso WORK debe cerrar aquí.
-        print(f"🔒 [H56-ZZ] ZIPPER: Validación de salida para evento {id_evento}.")
-        return "[H56-ZZ]"
+    # Nodo 1: CREATIVO
+    nodo_actual = nodos[0]
 
-    def work_h6_process(self, hex_id, ts):
-        """H6: Conflicto/Trabajo - Escritura en el STACK de Neo4j"""
-        with self.db.driver.session() as session:
-            query = """
-            MATCH (h:Hexagrama {id_hex: $hid})
-            OPTIONAL MATCH (ultimo:Latido)
-            WITH h, ultimo ORDER BY ultimo.timestamp DESC LIMIT 1
-            CREATE (n:Latido {
-                timestamp: datetime($ts),
-                id_hex: $hid,
-                token: "[H06-50]"
-            })
-            CREATE (n)-[:REPRESENTA]->(h)
-            WITH n, ultimo
-            FOREACH (_ IN CASE WHEN ultimo IS NOT NULL THEN [1] ELSE [] END |
-                CREATE (n)-[:SIGUE_A]->(ultimo)
-            )
-            RETURN n.token as token
-            """
-            result = session.run(query, hid=hex_id, ts=ts)
-            record = result.single()
-            return record['token'] if record else "[H06-50]"
+    try:
+        start_time = time.time()
+        time.sleep(0.1)
+        latencia = time.time() - start_time
 
-    def ejecutar_ciclo_maestro_con_mask(self, hex_id, intensidad_evento):
-        """Implementación del Filtro H52 (The Mask) en el flujo de trabajo"""
+        db.registrar_latido(
+            id_hex=nodo_actual['id'],
+            latencia=latencia,
+            msg=f"Protocolo {data['protocolo']}: Actuando como {nodo_actual['tag']}"
+        )
+        print(f"✅ Latido resonante: {nodo_actual['tag']} ({nodo_actual['descripcion']})")
+    except Exception as error_latido:
+        print(f"❌ Error al registrar en Neo4j: {error_latido}")
+    finally:
+        db.close()
 
-        # 1. GATES (H5): Sincronización inicial
-        ts = self.gates_h5_sync()
-
-        # 2. MASK (H52): Evaluación de Quietud vs Acción
-        # Si la intensidad es baja, Amelia impone Quietud para proteger los 12GB RAM
-        if intensidad_evento < 0.5:
-            print(f"🏔️ [Q52-00] MASK: Quietud impuesta (Hexagrama {hex_id}). Evento filtrado.")
-            return "[Q52-00]"
-
-        # 3. WORK (H6): Solo si la MASK es superada se procede al registro
-        token_work = self.work_h6_process(hex_id, ts)
-        print(f"✨ [H06-50] WORK: Latido registrado en el grafo.")
-
-        # 4. ZIPPER (H56): Validación de salida obligatoria
-        token_zip = self.zipper_h56_validation(hex_id)
-
-        return f"{token_work} >> {token_zip}"
+if __name__ == "__main__":
+    ejecutar_latido_con_sentido()
